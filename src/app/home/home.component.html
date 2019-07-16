@@ -1,0 +1,67 @@
+<div class="container" fxLayout="column" fxLayoutGap="10px">
+
+    <div fxFlex>
+        <div>
+            <h3>Asset Summary</h3>
+            <hr>
+        </div>
+    </div>
+
+    <div class="mat-elevation-z8" *ngIf="assets">
+        <table mat-table [dataSource]="assets" >
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let row_asset"> {{row_asset.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="budget">
+                <th mat-header-cell *matHeaderCellDef> Budget </th>
+                <td mat-cell *matCellDef="let row_asset"> {{row_asset.budget}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="cash">
+                <th mat-header-cell *matHeaderCellDef> Cash </th>
+                <td mat-cell *matCellDef="let row_asset"> {{row_asset.cash}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="numShares">
+                <th mat-header-cell *matHeaderCellDef>  Shares </th>
+                <td mat-cell *matCellDef="let row_asset"> {{row_asset.numShares}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="profit">
+                <th mat-header-cell *matHeaderCellDef> Profit </th>
+                <td mat-cell *matCellDef="let row_asset"> {{row_asset.profit}} </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let myRowData; columns: displayedColumns"></tr>
+
+        </table>
+    </div>
+<!--     
+    <div fxFlex *ngIf="assets">
+        <mat-list>
+            <mat-list-item *ngFor="let asset of assets">
+                <mat-grid-list cols="4" rowHeight="100px">
+                    <mat-grid-tile  >
+                        <h1> {{asset.name | uppercase}} </h1>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <span> Shares= {{asset.numShares}} </span>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <span> Budget= {{asset.budget}} </span>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <span> Profit= {{asset.profit}} </span>
+                    </mat-grid-tile>
+                                     
+                </mat-grid-list>
+            </mat-list-item>
+        </mat-list>
+    </div> -->
+
+
+</div>
