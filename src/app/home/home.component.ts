@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Asset } from '../shared/asset';
 import { AssetService } from '../services/asset.service';
 
@@ -7,16 +7,23 @@ import { AssetService } from '../services/asset.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
+
+
 export class HomeComponent implements OnInit {
 
   assets: Asset[];
+  errMess: string;
   displayedColumns: string[];
 
   
-  constructor(private assetService: AssetService) { }
+  constructor(private assetService: AssetService,
+  @Inject('baseURL') private baseURL) { }
 
   ngOnInit() {
-    this.assets = this.assetService.getAssets()
+    this.assetService.getAssets()
+    .subscribe(assets => this.assets=assets
+    , error=>this.errMess=error);
+
     this.displayedColumns = ['name', 'budget', 'cash','numShares','profit'];
   }
 

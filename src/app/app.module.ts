@@ -28,6 +28,11 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 
+import { AssetService } from './services/asset.service';
+import { ProcessHTTPMsgService } from './services/process-httpmsg.service';
+
+import { baseURL } from './shared/baseurl';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +63,11 @@ import { HomeComponent } from './home/home.component';
     MatSelectModule,
     MatProgressSpinnerModule
   ],
-  providers: [],
+  providers: [
+    AssetService,
+    ProcessHTTPMsgService,
+    {provide: 'baseURL', useValue: baseURL}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
