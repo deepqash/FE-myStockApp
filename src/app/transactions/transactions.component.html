@@ -1,0 +1,141 @@
+<div class="container" fxLayout="column" fxLayoutGap="10px" *ngFor="let asset of assets"> 
+
+<div fxFlex>
+    <h4>{{asset.name}}</h4>
+    <hr>
+</div>
+
+
+<div class="container" fxLayout="row" >   
+    <div fxLayoutAlign="left" fxLayoutGap="10px" *ngFor="let bucket of asset.asset_buckets">
+        <mat-card >
+            <mat-card-header>
+                <div mat-card-avatar></div>
+                <mat-card-title>
+                    <h3>{{bucket.bucketName}}</h3>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-accordion displayMode="flat" class="mat-table example-headers-align">
+                    <section class=" mat-header-row">
+                        <span class="mat-header-cell"> Trade action</span>
+                        <span class="mat-header-cell"> Date</span>
+                        <span class="mat-header-cell"> Quantity</span>
+                        <span class="mat-header-cell"> price</span>
+                        <span class="mat-header-cell"> order type</span>
+                    </section>
+                
+                    <mat-expansion-panel *ngFor="let transaction of bucket.transactions">
+                        <mat-expansion-panel-header class="mat-row">
+                            <span class="mat-cell">{{transaction.trade_action}}</span>
+                            <span class="mat-cell">{{transaction.date}}</span>
+                            <span class="mat-cell">{{transaction.shares}}</span>
+                            <span class="mat-cell">{{transaction.price}}</span>
+                            <span class="mat-cell">{{transaction.order_type}}</span>
+                        </mat-expansion-panel-header>
+                        <div>
+                            <pre>{{transaction | json}}</pre>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+                
+                <div fxFlex>
+                    <hr>
+                </div>
+
+                <!-- Charts here -->
+                <!-- <div> -->
+                    <!-- <ngx-charts-bar-vertical-2d [view]="view" [scheme]="colorScheme" [results]="transactionData[{{asset.name}}]" [gradient]="gradient" [xAxis]="showXAxis"
+                        [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
+                        [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+                    </ngx-charts-bar-vertical-2d> -->
+                <!-- </div> -->
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    
+
+
+
+
+
+    <!-- <div fxFlex="30">
+        <div>
+            <h4>{{bucket.bucketName}}</h4>
+        </div>
+
+        <mat-accordion displayMode="flat" class="mat-table example-headers-align">
+            <section  class=" mat-header-row">
+                <span class="mat-header-cell"> Trade action</span>
+                <span class="mat-header-cell"> Date</span>
+                <span class="mat-header-cell"> Quantity</span>
+                <span class="mat-header-cell"> price</span>
+                <span class="mat-header-cell"> order type</span>            
+            </section>
+
+            <mat-expansion-panel *ngFor="let transaction of bucket.transactions">
+                <mat-expansion-panel-header class="mat-row">
+                    <span class="mat-cell">{{transaction.trade_action}}</span>
+                    <span class="mat-cell">{{transaction.date}}</span>
+                    <span class="mat-cell">{{transaction.shares}}</span>
+                    <span class="mat-cell">{{transaction.price}}</span>
+                    <span class="mat-cell">{{transaction.order_type}}</span>
+                </mat-expansion-panel-header>
+                <div>
+                    <pre>{{transaction | json}}</pre>
+                </div>
+            </mat-expansion-panel>
+
+        </mat-accordion>
+    </div> -->
+
+    <!-- <mat-accordion *ngFor="let transaction of bucket.transactions">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{transaction.type}}
+                </mat-panel-title>
+                <mat-panel-description>
+                    <span>date: {transaction.date}} </span>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+    
+        </mat-expansion-panel>
+    </mat-accordion> -->
+
+
+</div> 
+    
+
+    <div *ngIf="errMess">
+        <h2>Error</h2>
+        <h4>{{errMess.message}}</h4>
+    </div> 
+
+    <!--     
+    <div fxFlex *ngIf="assets">
+        <mat-list>
+            <mat-list-item *ngFor="let asset of assets">
+                <mat-grid-list cols="4" rowHeight="100px">
+                    <mat-grid-tile  >
+                        <h1> {{asset.name | uppercase}} </h1>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <span> Shares= {{asset.numShares}} </span>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <span> Budget= {{asset.budget}} </span>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <span> Profit= {{asset.profit}} </span>
+                    </mat-grid-tile>
+                                     
+                </mat-grid-list>
+            </mat-list-item>
+        </mat-list>
+    </div> -->
+
+
+</div> 

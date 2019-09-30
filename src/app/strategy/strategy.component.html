@@ -1,0 +1,64 @@
+<div class="container" fxLayout="column" fxLayoutGap="10px" >
+
+    <!-- <div fxFlex>
+        <div>
+            <h3>{{strategy.strategy}}</h3>
+            <hr>
+        </div>
+    </div> -->
+
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="strategies">
+    
+            <ng-container matColumnDef="strategy">
+                <th mat-header-cell *matHeaderCellDef class="table_col_header"> Strategy </th>
+                <!-- <tr mat-header-row *matHeaderRowDef="alpha_buy"></tr> -->
+                <td mat-cell *matCellDef="let strategy" class="table_col_header"> {{strategy.strategy}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="alpha_buy">
+                <th mat-header-cell *matHeaderCellDef class="table_col_header"> alpha_buy </th>
+                <!-- <tr mat-header-row *matHeaderRowDef="alpha_buy"></tr> -->
+                <td mat-cell *matCellDef="let strategy" class="table_col_header"> {{strategy.alpha_buy}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="alpha_sell">
+                <th mat-header-cell *matHeaderCellDef class="table_col_header"> alpha_sell </th>
+                <!-- <tr mat-header-row *matHeaderRowDef="alpha_buy"></tr> -->
+                <td mat-cell *matCellDef="let strategy" class="table_col_header"> {{strategy.alpha_sell}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="beta_sell">
+                <th mat-header-cell *matHeaderCellDef class="table_col_header"> beta_sell </th>
+                <!-- <tr mat-header-row *matHeaderRowDef="alpha_buy"></tr> -->
+                <td mat-cell *matCellDef="let strategy" class="table_col_header"> {{strategy.beta_sell}} </td>
+            </ng-container>
+    
+            <!-- <ng-container matColumnDef="alpha_buy">
+                        <th mat-header-cell *matHeaderCellDef class="table_col_header"> Alpha_buy </th>
+                        <td mat-cell *matCellDef="let strategy" class="table_col_header"> {{strategy.alpha_buy}} </td>
+                    </ng-container>
+        
+                    <ng-container matColumnDef="alpha_sell">
+                        <th mat-header-cell *matHeaderCellDef class="table_col_header"> Alpha_sell </th>
+                        <td mat-cell *matCellDef="let strategy" class="table_col_header"> {{strategy.alpha_sell}} </td>
+                    </ng-container>
+        
+                    <ng-container matColumnDef="beta_sell">
+                        <th mat-header-cell *matHeaderCellDef class="table_col_header"> Beta_sell </th>
+                        <td mat-cell *matCellDef="let strategy" class="table_col_header"> {{strategy.beta_sell}} </td> 
+                    </ng-container> -->
+    
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    
+        </table>
+    </div>
+
+    <div *ngIf="errMess">
+        <h2>Error</h2>
+        <h4>{{errMess.message}}</h4>
+    </div>
+
+
+</div>

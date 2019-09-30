@@ -1,8 +1,7 @@
-import { Transaction } from './transaction';
+import { AssetBucket } from './asset_bucket';
 
 
 export class Asset {
-    _id: string;
     name: string;
     dateCreated: string;
     symbol: string;
@@ -17,5 +16,5 @@ export class Asset {
     lastBuyPrice: number;
     toSellPrice: number;
     toBuyPrice: number;
-    transaction:[Transaction];
+    asset_buckets: [AssetBucket];
 }

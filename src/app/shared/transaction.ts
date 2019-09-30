@@ -1,4 +1,7 @@
 export class Transaction {
-    numShares: number;
-    date: string;
+    trade_action: String;
+    shares: Number;
+    date: String;
+    price: Number;
+    order_type: String;
 }
